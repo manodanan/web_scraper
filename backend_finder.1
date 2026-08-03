@@ -1,5 +1,5 @@
 .\" Manpage for backend_finder
-.TH BACKEND_FINDER 1 "03 August 2026" "v1.0" "Backend API Finder Manual"
+.TH BACKEND_FINDER 1 "August 3, 2026" "v1.0" "Backend API Finder Manual"
 .SH NAME
 backend_finder \- Machine learning powered application backend and API discovery utility
 .SH SYNOPSIS
@@ -8,18 +8,25 @@ backend_finder \- Machine learning powered application backend and API discovery
 [\fB\-u\fR \fIURL\fR]
 [\fB\-o\fR \fIFILE\fR]
 [\fB\-t\fR \fITHRESHOLD\fR]
+[\fB\-\-browser\fR \fIENGINE\fR]
 [\fB\-\-no\-headless\fR]
 [\fB\-v\fR]
 [\fB\-\-no\-color\fR]
+[\fB\-\-man\fR]
 .SH DESCRIPTION
 .B backend_finder
 is a command-line security and web-scraping analysis tool designed to identify core backend microservices, REST/GraphQL endpoints, and XHR/Fetch network traffic for any target web application.
 .PP
 The tool performs static analysis on JavaScript bundle scripts and embedded state tags, followed by live browser network interception using Playwright. Intercepted requests are classified using a Scikit-Learn Machine Learning pipeline (Calibrated Gradient Boosting Classifier, TF-IDF character n-grams, Shannon entropy, and domain affinity features) to score endpoints and filter third-party telemetry, trackers, and static asset noise.
+.PP
+The classifier is trained on a small built-in labelled corpus every time the program starts. There is no separate training step, and no model file is read from or written to disk.
 .SH OPTIONS
 .TP
+.I TARGET_URL
+Target web application URL, given as a positional argument (default: \fIhttps://dummyjson.com/\fR). If the URL has no scheme, \fIhttps://\fR is prepended automatically.
+.TP
 .BR \-u ", " \-\-url " \fIURL\fR"
-Target web application URL to inspect (e.g., https://example.com).
+Target web application URL to inspect (e.g., https://example.com). Overrides the positional \fITARGET_URL\fR argument when both are given.
 .TP
 .BR \-o ", " \-\-output " \fIFILE\fR"
 Path to write the output JSON report (default: \fIbackend_report.json\fR).
@@ -27,26 +34,48 @@ Path to write the output JSON report (default: \fIbackend_report.json\fR).
 .BR \-t ", " \-\-threshold " \fITHRESHOLD\fR"
 ML confidence score threshold between 0.0 and 1.0 (default: \fI0.50\fR). Requests with scores at or above this threshold are classified as core backend APIs.
 .TP
+.BI \-\-browser " ENGINE"
+Browser engine used for live network interception: \fIchromium\fR, \fIfirefox\fR, or \fIwebkit\fR (default: \fIchromium\fR). If the selected engine's binary is not present, it is downloaded automatically on first use.
+.TP
 .B \-\-no\-headless
 Runs the browser in visible interactive mode instead of headless mode.
 .TP
 .BR \-v ", " \-\-verbose
-Enable verbose network request tracing output.
+Enable verbose network request tracing output. Every intercepted request is printed as it is captured.
 .TP
 .B \-\-no\-color
-Disable ANSI escape sequences for plain-text or piped terminal output.
+Disable ANSI escape sequences for plain-text or piped terminal output. Colors are also disabled automatically when standard output is not a terminal.
+.TP
+.B \-\-man
+Display this manual page and exit. Rendering falls back to
+.BR cat (1)
+if
+.BR man (1)
+is unavailable.
 .SH EXAMPLES
 .TP
 Basic scan of a web application:
-.B backend_finder https://trendyol.com/
+.B backend_finder https://quotes.toscrape.com/scroll
 .TP
 Scan with custom confidence threshold and report output:
 .B backend_finder -u https://dummyjson.com/ -t 0.70 -o custom_report.json
 .TP
+Scan using a different browser engine:
+.B backend_finder https://example.com/ --browser firefox
+.TP
+Watch the browser work and trace every request:
+.B backend_finder https://example.com/ --no-headless -v
+.TP
 View the manual page:
 .B man ./backend_finder.1
 .SH OUTPUT FORMAT
-The output JSON file (\fIbackend_report.json\fR) contains the following sections:
+The output JSON file (\fIbackend_report.json\fR) contains the following keys:
+.TP
+.B target_url
+The URL that was scanned, after scheme normalization.
+.TP
+.B browser_engine
+The browser engine used for interception.
 .TP
 .B summary
 Aggregated counts of captured requests, identified backend APIs, third-party noise, and discovered JavaScript routes.
@@ -54,8 +83,22 @@ Aggregated counts of captured requests, identified backend APIs, third-party noi
 .B backend_apis
 List of network requests scored at or above the confidence threshold, including HTTP method, URL, resource type, and headers.
 .TP
+.B all_requests
+Every intercepted request, including those scored below the threshold, sorted by descending score.
+.TP
 .B js_discovered_endpoints
 Endpoints extracted from static JavaScript bundle files ranked by ML confidence score.
+.TP
+.B embedded_state
+Truncated previews of embedded JSON state tags found in the page HTML, such as \fI__NEXT_DATA__\fR.
+.SH NOTES
+Image, stylesheet, font, and media requests are discarded at capture time and never appear in the report. Static asset paths and known analytics or tracker domains are additionally capped at a low score by the classifier.
+.PP
+Requests to the target's own host that look like API traffic are boosted to a floor of 0.85, which can occasionally promote a first-party telemetry endpoint into the
+.B backend_apis
+list. Inspect
+.B all_requests
+when a result looks surprising.
 .SH FILES
 .I backend_finder.py
 .RS
