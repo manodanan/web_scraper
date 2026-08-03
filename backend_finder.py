@@ -6,15 +6,22 @@ Discovers backend APIs, XHR/Fetch endpoints, GraphQL services,
 embedded state data, and API routes for target web applications.
 
 Usage:
-  python backend_finder.py https://example.com/ [options]
+  backend-finder https://example.com/ [options]
 """
 
 import sys
 import os
+
+# Ensure current script directory is in sys.path
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+
 import re
 import json
 import asyncio
 import argparse
+import subprocess
 from urllib.parse import urlparse, urljoin
 import requests
 from bs4 import BeautifulSoup
@@ -50,12 +57,33 @@ HEADERS = {
 
 
 def display_manual():
-    man_path = os.path.join(os.path.dirname(__file__), "backend_finder.1")
+    man_path = os.path.join(SCRIPT_DIR, "backend_finder.1")
     if os.path.exists(man_path):
         os.system(f"man '{man_path}' 2>/dev/null || cat '{man_path}'")
     else:
         print("Manual page file backend_finder.1 not found.")
     sys.exit(0)
+
+
+def ensure_chromium_installed(browser_engine="chromium"):
+    """Ensures Chromium browser binaries are installed for Playwright."""
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser_type = getattr(p, browser_engine, p.chromium)
+            try:
+                b = browser_type.launch(headless=True)
+                b.close()
+                return
+            except Exception as e:
+                err_str = str(e).lower()
+                if "executable doesn't exist" in err_str or "playwright install" in err_str:
+                    print(f"    [INFO] {browser_engine.capitalize()} browser missing. Automatically installing {browser_engine}...")
+                    subprocess.run([sys.executable, "-m", "playwright", "install", browser_engine], check=True)
+                else:
+                    raise e
+    except Exception as e:
+        print(f"    [WARN] Auto-install check note: {e}")
 
 
 def scan_static_assets(url, classifier, verbose=False):
@@ -126,21 +154,38 @@ def scan_static_assets(url, classifier, verbose=False):
     return results
 
 
-async def scan_live_browser_network(url, classifier, headless=True, verbose=False):
-    """Intercepts live network calls and classifies them using Machine Learning."""
-    print(f"\n[+] [2/2] Intercepting Live Network Traffic...")
+async def scan_live_browser_network(url, classifier, headless=True, verbose=False, browser_engine="chromium"):
+    """Intercepts live network calls using Chromium and classifies them with Machine Learning."""
+    print(f"\n[+] [2/2] Intercepting Live Network Traffic with {browser_engine.capitalize()}...")
     captured_requests = []
     
     try:
         from playwright.async_api import async_playwright
         async with async_playwright() as p:
-            browser = await p.chromium.launch(
-                headless=headless,
-                args=[
-                    "--disable-blink-features=AutomationControlled",
-                    "--no-sandbox"
-                ]
-            )
+            browser_type = getattr(p, browser_engine, p.chromium)
+            
+            launch_args = [
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox"
+            ] if browser_engine == "chromium" else []
+
+            try:
+                browser = await browser_type.launch(
+                    headless=headless,
+                    args=launch_args
+                )
+            except Exception as e:
+                err_str = str(e).lower()
+                if "executable doesn't exist" in err_str or "playwright install" in err_str:
+                    print(f"    [INFO] {browser_engine.capitalize()} binary missing. Installing Chromium...")
+                    subprocess.run([sys.executable, "-m", "playwright", "install", browser_engine], check=True)
+                    browser = await browser_type.launch(
+                        headless=headless,
+                        args=launch_args
+                    )
+                else:
+                    raise e
+
             context = await browser.new_context(
                 user_agent=HEADERS["User-Agent"],
                 viewport={"width": 1280, "height": 800}
@@ -178,7 +223,7 @@ async def scan_live_browser_network(url, classifier, headless=True, verbose=Fals
 
             page.on("request", handle_request)
 
-            print(f"    [INFO] Navigating browser to: {url}")
+            print(f"    [INFO] Navigating {browser_engine.capitalize()} to: {url}")
             response = await page.goto(url, wait_until="domcontentloaded", timeout=20000)
             status_str = f"HTTP {response.status}" if response else "Unknown Status"
             print(f"    [INFO] Initial Response: {status_str}")
@@ -198,7 +243,7 @@ async def scan_live_browser_network(url, classifier, headless=True, verbose=Fals
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        description="Backend & API Finder CLI - Discovers backend APIs and XHR/Fetch endpoints using Machine Learning.",
+        description="Backend & API Finder CLI - Discovers backend APIs and XHR/Fetch endpoints using Chromium and Machine Learning.",
         formatter_class=argparse.RawTextHelpFormatter
     )
     parser.add_argument(
@@ -224,9 +269,15 @@ def parse_arguments():
         help="ML confidence score threshold for filtering backend APIs (0.0 to 1.0, default: 0.50)"
     )
     parser.add_argument(
+        "--browser",
+        choices=["chromium", "firefox", "webkit"],
+        default="chromium",
+        help="Browser engine to use for network interception (default: chromium)"
+    )
+    parser.add_argument(
         "--no-headless",
         action="store_true",
-        help="Run browser in visible mode (default: headless)"
+        help="Run Chromium browser in visible mode (default: headless)"
     )
     parser.add_argument(
         "-v", "--verbose",
@@ -263,8 +314,12 @@ def main():
     print(f"{Colors.BOLD} BACKEND & API FINDER CLI {Colors.RESET}")
     print(f"{Colors.BOLD}=================================================={Colors.RESET}")
     print(f"Target URL : {Colors.CYAN}{target_url}{Colors.RESET}")
+    print(f"Engine     : {args.browser.capitalize()}")
     print(f"Threshold  : {args.threshold * 100:.0f}% ML Confidence")
     print(f"Output File: {args.output}")
+
+    # Ensure Chromium binaries are ready
+    ensure_chromium_installed(args.browser)
 
     # Initialize ML Classifier
     classifier = MLBackendClassifier()
@@ -273,13 +328,14 @@ def main():
     # 1. Scan static JS & HTML
     static_results = scan_static_assets(target_url, classifier, verbose=args.verbose)
 
-    # 2. Monitor live browser network calls
+    # 2. Monitor live browser network calls using Chromium
     live_requests = asyncio.run(
         scan_live_browser_network(
             target_url,
             classifier,
             headless=not args.no_headless,
-            verbose=args.verbose
+            verbose=args.verbose,
+            browser_engine=args.browser
         )
     )
 
@@ -289,6 +345,7 @@ def main():
 
     report = {
         "target_url": target_url,
+        "browser_engine": args.browser,
         "summary": {
             "total_captured_requests": len(live_requests),
             "backend_apis_count": len(backend_apis),
