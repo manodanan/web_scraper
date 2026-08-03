@@ -1,0 +1,571 @@
+{
+  "target_url": "https://trendyol.com/",
+  "summary": {
+    "total_captured_requests": 36,
+    "backend_apis_count": 6,
+    "third_party_noise_count": 30,
+    "js_endpoints_count": 0
+  },
+  "backend_apis": [
+    {
+      "method": "POST",
+      "type": "fetch",
+      "url": "https://apigw.trendyol.com/devx-extensibility-ring-api/v1/rings/evaluate",
+      "score": 0.8662,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://demeter-api.trendyol.com/c/int/core/custom_parameters",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://apigw.trendyol.com/discovery-sfint-browsing-service/m-country-selection/en/select-country?__renderMode=stream&pageName=select-country",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "x-puzzle-consumer-app-name": "web-shell",
+        "referer": "",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "originalhost": "www.trendyol.com",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "originalurl": "/en/select-country"
+      }
+    },
+    {
+      "method": "POST",
+      "type": "xhr",
+      "url": "https://www.trendyol.com/cdn-cgi/rum?",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.trendyol.com/en/select-country",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "POST",
+      "type": "ping",
+      "url": "https://demeter-api.trendyol.com/c/int/core/ea",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "text/plain;charset=UTF-8",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/scripttemplates/202402.1.0/assets/v2/otPcCenter.json",
+      "score": 0.75,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    }
+  ],
+  "all_requests": [
+    {
+      "method": "POST",
+      "type": "fetch",
+      "url": "https://apigw.trendyol.com/devx-extensibility-ring-api/v1/rings/evaluate",
+      "score": 0.8662,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://demeter-api.trendyol.com/c/int/core/custom_parameters",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://apigw.trendyol.com/discovery-sfint-browsing-service/m-country-selection/en/select-country?__renderMode=stream&pageName=select-country",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "x-puzzle-consumer-app-name": "web-shell",
+        "referer": "",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "originalhost": "www.trendyol.com",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "originalurl": "/en/select-country"
+      }
+    },
+    {
+      "method": "POST",
+      "type": "xhr",
+      "url": "https://www.trendyol.com/cdn-cgi/rum?",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.trendyol.com/en/select-country",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "POST",
+      "type": "ping",
+      "url": "https://demeter-api.trendyol.com/c/int/core/ea",
+      "score": 0.85,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "content-type": "text/plain;charset=UTF-8",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/scripttemplates/202402.1.0/assets/v2/otPcCenter.json",
+      "score": 0.75,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/scripttemplates/202402.1.0/assets/otFlat.json",
+      "score": 0.1479,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "xhr",
+      "url": "https://cdn.cookielaw.org/consent/9f39d2ab-554a-4143-a486-c570be9822ac/9f39d2ab-554a-4143-a486-c570be9822ac.json",
+      "score": 0.1433,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/consent/9f39d2ab-554a-4143-a486-c570be9822ac/01939193-c485-7516-94b5-12040dae9e93/tr.json",
+      "score": 0.1433,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "document",
+      "url": "https://www.trendyol.com/en/select-country",
+      "score": 0.1032,
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://track.adform.net/Serving/TrackPoint/?pm=3940330&ADFPageName=All_Pages_Visitors&ADFdivider=%7C&ord=319413427295&ADFtpmode=2&loc=https%3A%2F%2Fwww.trendyol.com%2Fen%2Fselect-country&Set1=en-US%7Cen-US%7C1280x800%7C24",
+      "score": 0.1032,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://track.adform.net/Serving/TrackPoint/?pm=3940330&ADFPageName=Landing_Page_Visitors&ADFdivider=%7C&ord=791439851432&ADFtpmode=2&loc=https%3A%2F%2Fwww.trendyol.com%2Fen%2Fselect-country&Set1=en-US%7Cen-US%7C1280x800%7C24",
+      "score": 0.1032,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://track.adform.net/Serving/TrackPoint/?CC=1&pm=3940330&ADFPageName=All_Pages_Visitors&ADFdivider=%7C&ord=319413427295&ADFtpmode=2&loc=https%3A%2F%2Fwww.trendyol.com%2Fen%2Fselect-country&Set1=en-US%7Cen-US%7C1280x800%7C24",
+      "score": 0.1032,
+      "headers": {
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "referer": ""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://track.adform.net/Serving/TrackPoint/?CC=1&pm=3940330&ADFPageName=Landing_Page_Visitors&ADFdivider=%7C&ord=791439851432&ADFtpmode=2&loc=https%3A%2F%2Fwww.trendyol.com%2Fen%2Fselect-country&Set1=en-US%7Cen-US%7C1280x800%7C24",
+      "score": 0.1032,
+      "headers": {
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "referer": ""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/web/prod/ring-manager.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/static/library.7c850f77c9e7ae1ca588cf35b0416e6e.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/static/libraryv2.9ed3c4aeb24b418a495eb7901f5950b5.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/static/sf-common-legacy.20260106.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/static/react-19.2.6.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/static/demeter-prod-1-7-3.umd.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfx/mergen/0.13.1/errors.BjkNLbnu.js",
+      "score": 0.1,
+      "headers": {
+        "origin": "https://www.trendyol.com",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://cdn.dsmcdn.com/sfx/mergen/0.13.1/index.js",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/scripttemplates/202402.1.0/assets/otCommonStyles.css",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "fetch",
+      "url": "https://cdn.cookielaw.org/logos/static/ot_guard_logo.svg",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb/master/gtm.service.dc52818b8f0e0b99.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://s2.adform.net/banners/scripts/st/trackpoint-async.js",
+      "score": 0.1,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "document",
+      "url": "https://trendyol.com/",
+      "score": 0.0994,
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "document",
+      "url": "https://www.trendyol.com/",
+      "score": 0.0994,
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js",
+      "score": 0.0994,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://www.trendyol.com/static/puzzle.min.js",
+      "score": 0.0994,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.trendyol.com/en/select-country",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfx/mergen/0.13.1/index.js",
+      "score": 0.0994,
+      "headers": {
+        "origin": "https://www.trendyol.com",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.cookielaw.org/scripttemplates/202402.1.0/otBannerSdk.js",
+      "score": 0.0994,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://cdn.dsmcdn.com/sfweb-browsing/master/m-country-selection.bundle.4c7addda.js",
+      "score": 0.0994,
+      "headers": {
+        "origin": "https://www.trendyol.com",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "document",
+      "url": "https://c1.adform.net/imatch/pixels?bt=0&uid=3459100270069807443&agencyId=9964&advertiserId=2230739&src=tp&rnd=139943",
+      "score": 0.0994,
+      "headers": {
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496",
+      "score": 0.05,
+      "headers": {
+        "origin": "https://www.trendyol.com",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-W7RKTTC",
+      "score": 0.05,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    },
+    {
+      "method": "GET",
+      "type": "script",
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-N5Z4ND6&gtm=4e67u0",
+      "score": 0.05,
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+        "sec-ch-ua-mobile": "?0"
+      }
+    }
+  ],
+  "js_discovered_endpoints": [],
+  "embedded_state": []
+}

@@ -1,0 +1,3 @@
+[console_scripts]
+backend-finder = backend_finder:main
+backend_finder = backend_finder:main

@@ -1,0 +1,76 @@
+.\" Manpage for backend_finder
+.TH BACKEND_FINDER 1 "03 August 2026" "v1.0" "Backend API Finder Manual"
+.SH NAME
+backend_finder \- Machine learning powered application backend and API discovery utility
+.SH SYNOPSIS
+.B backend_finder
+[\fITARGET_URL\fR]
+[\fB\-u\fR \fIURL\fR]
+[\fB\-o\fR \fIFILE\fR]
+[\fB\-t\fR \fITHRESHOLD\fR]
+[\fB\-\-no\-headless\fR]
+[\fB\-v\fR]
+[\fB\-\-no\-color\fR]
+.SH DESCRIPTION
+.B backend_finder
+is a command-line security and web-scraping analysis tool designed to identify core backend microservices, REST/GraphQL endpoints, and XHR/Fetch network traffic for any target web application.
+.PP
+The tool performs static analysis on JavaScript bundle scripts and embedded state tags, followed by live browser network interception using Playwright. Intercepted requests are classified using a Scikit-Learn Machine Learning pipeline (Calibrated Gradient Boosting Classifier, TF-IDF character n-grams, Shannon entropy, and domain affinity features) to score endpoints and filter third-party telemetry, trackers, and static asset noise.
+.SH OPTIONS
+.TP
+.BR \-u ", " \-\-url " \fIURL\fR"
+Target web application URL to inspect (e.g., https://example.com).
+.TP
+.BR \-o ", " \-\-output " \fIFILE\fR"
+Path to write the output JSON report (default: \fIbackend_report.json\fR).
+.TP
+.BR \-t ", " \-\-threshold " \fITHRESHOLD\fR"
+ML confidence score threshold between 0.0 and 1.0 (default: \fI0.50\fR). Requests with scores at or above this threshold are classified as core backend APIs.
+.TP
+.B \-\-no\-headless
+Runs the browser in visible interactive mode instead of headless mode.
+.TP
+.BR \-v ", " \-\-verbose
+Enable verbose network request tracing output.
+.TP
+.B \-\-no\-color
+Disable ANSI escape sequences for plain-text or piped terminal output.
+.SH EXAMPLES
+.TP
+Basic scan of a web application:
+.B backend_finder https://trendyol.com/
+.TP
+Scan with custom confidence threshold and report output:
+.B backend_finder -u https://dummyjson.com/ -t 0.70 -o custom_report.json
+.TP
+View the manual page:
+.B man ./backend_finder.1
+.SH OUTPUT FORMAT
+The output JSON file (\fIbackend_report.json\fR) contains the following sections:
+.TP
+.B summary
+Aggregated counts of captured requests, identified backend APIs, third-party noise, and discovered JavaScript routes.
+.TP
+.B backend_apis
+List of network requests scored at or above the confidence threshold, including HTTP method, URL, resource type, and headers.
+.TP
+.B js_discovered_endpoints
+Endpoints extracted from static JavaScript bundle files ranked by ML confidence score.
+.SH FILES
+.I backend_finder.py
+.RS
+Primary Python CLI application executable.
+.RE
+.I ml_backend_classifier.py
+.RS
+Scikit-Learn Machine Learning classifier engine.
+.RE
+.I backend_report.json
+.RS
+Default output report file.
+.RE
+.SH SEE ALSO
+.BR python3 (1),
+.BR playwright (1)
+.SH AUTHOR
+Developed for web scraping, backend auditing, and API discovery workflows.
