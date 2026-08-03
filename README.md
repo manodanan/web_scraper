@@ -16,7 +16,8 @@ This walkthrough takes about five minutes and ends with you holding a real site'
 
 - Python 3.9 or newer (`python3 --version`)
 - macOS or Linux
-- ~150 MB of disk for the Chromium download (one time, automatic)
+- **~550 MB of free disk** for the Chromium download. This happens once, automatically, on your first scan — but it is not small, so don't start on a nearly-full drive. Already have Playwright's Chromium? Then it costs nothing.
+- `jq` is used in Step 4 to read the report. It's optional — a `python3` equivalent is given alongside it.
 
 ### Step 1 — Install
 
@@ -52,7 +53,7 @@ We'll scan [quotes.toscrape.com/scroll](https://quotes.toscrape.com/scroll), a p
 backend-finder https://quotes.toscrape.com/scroll
 ```
 
-The scan takes about fifteen seconds and prints:
+The scan takes about ten seconds — longer on the very first run, which downloads Chromium — and prints:
 
 ```text
 ==================================================
@@ -138,6 +139,22 @@ jq -r '.all_requests[] | "\(.score)  \(.type)  \(.url)"' backend_report.json
 0.85  xhr  https://quotes.toscrape.com/api/quotes?page=1
 0.1  script  https://quotes.toscrape.com/static/jquery.js
 0.0994  document  https://quotes.toscrape.com/scroll
+```
+
+No `jq`? Python reads it just as well, and you already have Python:
+
+```bash
+python3 -c "import json; r = json.load(open('backend_report.json')); print(json.dumps(r['summary'], indent=2)); [print(a['score'], a['method'], a['url']) for a in r['backend_apis']]"
+```
+
+```text
+{
+  "total_captured_requests": 3,
+  "backend_apis_count": 1,
+  "third_party_noise_count": 2,
+  "js_endpoints_count": 0
+}
+0.85 GET https://quotes.toscrape.com/api/quotes?page=1
 ```
 
 `backend_apis` entries also carry the full request `headers`, which is where you'll find the `Authorization` or `X-API-Key` values a site sends — useful when the endpoint doesn't work from `curl` on its own.
