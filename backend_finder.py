@@ -57,11 +57,17 @@ HEADERS = {
 
 
 def display_manual():
-    man_path = os.path.join(SCRIPT_DIR, "backend_finder.1")
-    if os.path.exists(man_path):
-        os.system(f"man '{man_path}' 2>/dev/null || cat '{man_path}'")
-    else:
-        print("Manual page file backend_finder.1 not found.")
+    # Source checkout keeps the page beside this file; an installed package
+    # puts it under the environment's share/man/man1 instead.
+    candidates = [
+        os.path.join(SCRIPT_DIR, "backend_finder.1"),
+        os.path.join(sys.prefix, "share", "man", "man1", "backend_finder.1"),
+    ]
+    for man_path in candidates:
+        if os.path.exists(man_path):
+            os.system(f"man '{man_path}' 2>/dev/null || cat '{man_path}'")
+            sys.exit(0)
+    print("Manual page file backend_finder.1 not found.")
     sys.exit(0)
 
 

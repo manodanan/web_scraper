@@ -21,27 +21,32 @@ This walkthrough takes about five minutes and ends with you holding a real site'
 
 ### Step 1 — Install
 
-Change into the project directory first — `pip install -e .` installs *the current directory*, so running it anywhere else fails with `does not appear to be a Python project`:
+Change into the project directory first. The final command installs *the current directory*, so running it anywhere else fails with `does not appear to be a Python project`:
 
 ```bash
 cd /path/to/web_scraper
 ```
 
+Then create an isolated environment and install the tool into it:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install .
 ```
 
-Every command in this tutorial assumes that venv is active. If you open a new terminal later, re-activate it with `source .venv/bin/activate` from the project directory.
-
-That installs the dependencies and puts a `backend-finder` command on your PATH. Confirm it worked:
+Confirm it worked:
 
 ```bash
 backend-finder --help
 ```
 
-If you get `ModuleNotFoundError: No module named 'backend_finder'`, jump to [Troubleshooting](#troubleshooting) — there's a one-line fix.
+You should see the usage banner. If instead you get `command not found`, the venv isn't active — run `source .venv/bin/activate` again and check your prompt starts with `(.venv)`.
+
+Two things worth knowing about this install:
+
+- **Every command in this tutorial assumes the venv is active.** New terminal later? `cd` back to the project and run `source .venv/bin/activate` before anything else.
+- **`pip install .` copies the code into the environment.** If you edit `backend_finder.py` or `ml_backend_classifier.py`, re-run `pip install .` to pick up your changes. (There's an `-e` "editable" mode that skips this, but it relies on a `.pth` file that macOS can silently disable — see [Troubleshooting](#troubleshooting) if you'd rather use it.)
 
 You don't need to install a browser separately. The first scan downloads Chromium automatically if it isn't already there.
 
@@ -270,15 +275,17 @@ The model retrains on a small built-in labelled corpus every time the tool start
 
 ## Troubleshooting
 
-**`ModuleNotFoundError: No module named 'backend_finder'` right after a successful install**
+**`ModuleNotFoundError: No module named 'backend_finder'` after an editable (`-e`) install**
 
-On macOS, if your virtualenv directories carry the Finder "hidden" flag, every file created inside them inherits it — including the `.pth` file that makes an editable install work. Python 3.13+ silently skips hidden `.pth` files, so the install completes but does nothing. Clear the flag and reinstall:
+This is why the tutorial uses plain `pip install .`, and it only affects `pip install -e .`.
+
+On macOS, if your virtualenv directories carry the Finder "hidden" flag, every file created inside them inherits it — including the `.pth` file that makes an editable install work. Python 3.13+ silently skips hidden `.pth` files, so `pip` reports success while the install does nothing at all. Clear the flag and reinstall:
 
 ```bash
 chflags -R nohidden .venv && pip install -e .
 ```
 
-You can confirm it's fixed with `ls -lO .venv/lib/python*/site-packages/*.pth` — the flags column should read `-`, not `hidden`.
+Confirm with `ls -lO .venv/lib/python*/site-packages/*.pth` — the flags column should read `-`, not `hidden`. A plain `pip install .` sidesteps this entirely, because it copies the modules into the environment and never creates a `.pth` file.
 
 **The scan finds nothing**
 
