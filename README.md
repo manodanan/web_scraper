@@ -45,7 +45,7 @@ You can execute the command directly using `backend-finder` or `python backend_f
 ### Basic Usage
 
 ```bash
-backend-finder https://trendyol.com/
+backend-finder https://example.com/
 ```
 
 ### Advanced Options
