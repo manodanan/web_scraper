@@ -20,13 +20,19 @@ This walkthrough takes about five minutes and ends with you holding a real site'
 
 ### Step 1 — Install
 
-From the project directory:
+Change into the project directory first — `pip install -e .` installs *the current directory*, so running it anywhere else fails with `does not appear to be a Python project`:
+
+```bash
+cd /path/to/web_scraper
+```
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 ```
+
+Every command in this tutorial assumes that venv is active. If you open a new terminal later, re-activate it with `source .venv/bin/activate` from the project directory.
 
 That installs the dependencies and puts a `backend-finder` command on your PATH. Confirm it worked:
 
